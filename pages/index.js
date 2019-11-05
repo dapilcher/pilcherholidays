@@ -1,3 +1,5 @@
-const Home = () => <p>Heyo</p>;
+import Home from "../components/Home";
 
-export default Home;
+const Index = () => <Home />;
+
+export default Index;

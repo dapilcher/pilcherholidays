@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-const StyledPage = styled.section`
-  padding: 1rem;
-`;
+const StyledPage = styled.section``;
 
 const Page = ({ children }) => <StyledPage>{children}</StyledPage>;
 
