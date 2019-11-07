@@ -34,7 +34,7 @@ const StyledNav = styled.nav`
   }
   .site-name {
     font-family: Merriweather;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     width: 100%;
     text-align: center;
     @media (min-width: 900px) {
@@ -64,7 +64,7 @@ const StyledNav = styled.nav`
     right: -100vw;
     transition: right 400ms ease-in-out;
     @media (min-width: 900px) {
-      max-width: 40vw;
+      max-width: 50vw;
     }
   }
   .toggle {
@@ -127,8 +127,9 @@ const Navbar = () => {
         <li className="items">
           <ul>
             <NavItem text="Home" href="/" />
-            <NavItem text="Lists" href="/" />
-            <NavItem text="Me" href="/" />
+            <NavItem text="Lists" href="/lists" />
+            <NavItem text="My List" href="/editor" />
+            <NavItem text="Login" href="/login" />
           </ul>
         </li>
         <li className="toggle">

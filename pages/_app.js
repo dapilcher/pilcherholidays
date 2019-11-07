@@ -5,23 +5,17 @@ import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Reset } from "../components/styles/Reset";
 import theme from "../components/styles/theme";
 
-import Navbar from "../components/Navbar";
 import Meta from "../components/Meta";
 import Page from "../components/Page";
-
-const Inner = styled.div`
-  max-width: 100%;
-  padding: 1rem;
-  z-index: -1;
-  height: auto;
-`;
+import { UserProvider, useUserContext } from "../components/UserContext";
 
 const Global = createGlobalStyle`
   html {
-    font-family: 'Raleway', sans-serif
+    font-family: 'Montserrat', sans-serif;
   }
   body {
     background-color: ${p => p.theme.white};
+    font-size: 10px;
   }
 `;
 
@@ -32,14 +26,13 @@ class MyApp extends App {
       <>
         <Meta />
         <ThemeProvider theme={theme}>
-          <Page>
-            <Reset />
-            <Global />
-            <Navbar />
-            <Inner>
+          <UserProvider>
+            <Page>
+              <Reset />
+              <Global />
               <Component {...pageProps} />
-            </Inner>
-          </Page>
+            </Page>
+          </UserProvider>
         </ThemeProvider>
       </>
     );
