@@ -1,5 +1,6 @@
 import React from "react";
 import App from "next/app";
+import dynamic from "next/dynamic";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { IdentityContextProvider } from "react-netlify-identity-widget";
 
@@ -7,7 +8,12 @@ import { Reset } from "../components/styles/Reset";
 import theme from "../components/styles/theme";
 
 import Meta from "../components/Meta";
-import Page from "../components/Page";
+// import Page from "../components/Page";
+
+const Page = dynamic(() => import("../components/Page"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>
+});
 
 const Global = createGlobalStyle`
   html {
