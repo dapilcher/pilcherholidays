@@ -5,39 +5,30 @@ const UserContext = createContext();
 
 const auth = {
   isAuthenticated: false,
-  user: null,
-  authenticate(callback) {
-    netlifyIdentity.open();
-    netlifyIdentity.on("login", user => {
-      this.isAuthenticated = true;
-      this.user = user;
-      callback(user);
-    });
-  },
-  signout(callback) {
-    netlifyIdentity.logout();
-    netlifyIdentity.on("logout", () => {
-      this.isAuthenticated = false;
-      this.user = null;
-      callback();
-    });
+  user: null
+};
+
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case "setIsAuthenticated":
+      return {
+        ...state,
+        isAuthenticated: action.isAuthenticated
+      };
+    case "setUser":
+      return {
+        ...state,
+        user: action.user
+      };
+    default:
+      return state;
   }
 };
 
-// const authReducer = (state, action) => {
-//   switch (action.type) {
-//     case "toggleAuthenticated":
-//       return {
-//         ...state,
-//         isAuthenticated: !state.isAuthenticated
-//       }
-//     default:
-//       return state
-//   }
-// }
-
 const UserProvider = ({ children }) => (
-  <UserContext.Provider value={useState(auth)}>{children}</UserContext.Provider>
+  <UserContext.Provider value={useReducer(auth, authReducer)}>
+    {children}
+  </UserContext.Provider>
 );
 
 const useUserContext = () => useContext(UserContext);

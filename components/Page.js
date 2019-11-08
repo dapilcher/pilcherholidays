@@ -1,9 +1,8 @@
 import styled from "styled-components";
+import { useIdentityContext } from "react-netlify-identity-widget";
 
 import LoginPage from "./LoginPage";
-
 import Navbar from "./Navbar";
-import { useUserContext } from "./UserContext";
 
 const StyledPage = styled.section`
   width: 100%;
@@ -16,11 +15,10 @@ const StyledPageInner = styled.section`
 `;
 
 const Page = ({ children }) => {
-  const [auth] = useUserContext();
-
+  const identity = useIdentityContext();
   return (
     <>
-      {!auth.isAuthenticated ? (
+      {!identity.isLoggedIn ? (
         <LoginPage />
       ) : (
         <StyledPage>

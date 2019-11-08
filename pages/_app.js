@@ -1,13 +1,13 @@
 import React from "react";
 import App from "next/app";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import { IdentityContextProvider } from "react-netlify-identity-widget";
 
 import { Reset } from "../components/styles/Reset";
 import theme from "../components/styles/theme";
 
 import Meta from "../components/Meta";
 import Page from "../components/Page";
-import { UserProvider, useUserContext } from "../components/UserContext";
 
 const Global = createGlobalStyle`
   html {
@@ -26,13 +26,13 @@ class MyApp extends App {
       <>
         <Meta />
         <ThemeProvider theme={theme}>
-          <UserProvider>
+          <IdentityContextProvider url="https://pilcherholidays.com">
             <Page>
               <Reset />
               <Global />
               <Component {...pageProps} />
             </Page>
-          </UserProvider>
+          </IdentityContextProvider>
         </ThemeProvider>
       </>
     );
