@@ -19,7 +19,14 @@
     "@zeit/next-css": "^1.0.1",
     "immutable": "^4.0.0-rc.12",
     "is-hotkey": "^0.1.6",
+    "md5": "^2.2.1",
+    "mongoose": "^5.7.8",
+    "mongoose-mongodb-errors": "0.0.2",
     "next": "^9.1.2",
+    "next-cookies": "^2.0.1",
+    "nookies": "^2.0.8",
+    "passport": "^0.4.0",
+    "passport-local-mongoose": "^5.0.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-icons": "^3.8.0",
@@ -27,6 +34,7 @@
     "react-netlify-identity-widget": "^0.2.5",
     "slate": "^0.47.8",
     "slate-react": "^0.22.9",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "validator": "^12.0.0"
   }
 }

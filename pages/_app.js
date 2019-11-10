@@ -1,14 +1,14 @@
 import React from "react";
 import App from "next/app";
 import dynamic from "next/dynamic";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
-import { IdentityContextProvider } from "react-netlify-identity-widget";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { parseCookies } from "nookies";
 
 import { Reset } from "../components/styles/Reset";
 import theme from "../components/styles/theme";
 
 import Meta from "../components/Meta";
-// import Page from "../components/Page";
+import LoginPage from "../components/LoginPage";
 
 const Page = dynamic(() => import("../components/Page"), {
   ssr: false,
@@ -26,19 +26,27 @@ const Global = createGlobalStyle`
 `;
 
 class MyApp extends App {
+  static async getInitialProps(ctx) {
+    const { testCookie } = parseCookies(ctx, {});
+    console.log({ testCookie });
+    return {};
+  }
+
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, ...rest } = this.props;
     return (
       <>
         <Meta />
         <ThemeProvider theme={theme}>
-          <IdentityContextProvider url="https://pilcherholidays.com">
+          {true ? (
+            <LoginPage />
+          ) : (
             <Page>
               <Reset />
               <Global />
-              <Component {...pageProps} />
+              <Component {...rest} />
             </Page>
-          </IdentityContextProvider>
+          )}
         </ThemeProvider>
       </>
     );
