@@ -22,7 +22,7 @@
     "md5": "^2.2.1",
     "mongoose": "^5.7.8",
     "mongoose-mongodb-errors": "0.0.2",
-    "next": "^9.1.2",
+    "next": "^9.3.2",
     "next-cookies": "^2.0.1",
     "nookies": "^2.0.8",
     "passport": "^0.4.0",
